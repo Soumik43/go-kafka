@@ -1,4 +1,4 @@
-package main
+package consumer
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"github.com/segmentio/kafka-go"
 )
 
-func main() {
+func consumer() {
 	conn, _ := kafka.DialLeader(context.Background(), "tcp", "localhost:9092", "kafka-test", 0)
 	conn.SetReadDeadline(time.Now().Add(time.Second * 10))
 	batch := conn.ReadBatch(1e3, 1e9)
